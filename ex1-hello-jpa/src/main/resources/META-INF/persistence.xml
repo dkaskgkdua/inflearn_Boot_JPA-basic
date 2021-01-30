@@ -17,6 +17,9 @@
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
             <property name="hibernate.hbm2ddl.auto" value="create" />
+            <property name="hibernate.jdbc.batch_size" value="10" />
+            <!-- batch_size는 지연쓰기 기능에서 10개까지 쌓아놓는걸 말함. 넘으면 flush-->
+
         </properties>
     </persistence-unit>
 </persistence>
