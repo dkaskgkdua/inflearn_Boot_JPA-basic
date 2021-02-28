@@ -18,9 +18,13 @@ public class Member {
     @Column(name = "MEMBER_ID")
     private Long id;
 
-    @Column(name = "name", insertable = true, updatable = true
+    @Column(name = "USERNAME", insertable = true, updatable = true
             , nullable = false, columnDefinition = "varchar(100) default 'EMPTY'")
-    private String name;
+    private String username;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "TEAM_ID")
+    private Team team;
 
     private String city;
     private String street;
