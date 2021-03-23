@@ -35,12 +35,28 @@ public class Member extends BaseEntity{
     @OneToMany(mappedBy = "member")
     private List<MemberProduct> memberProducts = new ArrayList<>();
 
-    private String city;
-    private String street;
-    private String zipcode;
-
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
+
+    // 임베디드 타입
+    @Embedded
+    private Period workPeriod;
+    @Embedded
+    private Address homeAddress;
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name="city",
+                    column=@Column(name = "WORK_CITY")),
+            @AttributeOverride(name="street",
+                    column=@Column(name = "WORK_STREET")),
+            @AttributeOverride(name="zipcode",
+                    column=@Column(name = "WORK_ZIPCODE"))
+            })
+    private Address workAddress;
+
+
+
 
 //    private Integer age;
 //
