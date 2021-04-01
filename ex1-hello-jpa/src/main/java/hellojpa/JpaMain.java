@@ -23,12 +23,18 @@ public class JpaMain {
         tx.begin();
 
         try {
-            Child child1 = new Child();
-            Child child2 = new Child();
-            Parent parent = new Parent();
+            Member member = new Member();
+            member.setUsername("member1");
+            member.setHomeAddress(new Address("city1", "street","zipcode"));
 
-            parent.addChild(child1);
-            parent.addChild(child2);
+            member.getFavoriteFoods().add("치킨");
+            member.getFavoriteFoods().add("족발");
+            member.getFavoriteFoods().add("피자");
+
+            member.getAddressHistory().add(new Address("old1", "stold1","oldzip1"));
+            member.getAddressHistory().add(new Address("old2", "stold2","oldzip2"));
+
+            em.persist(member);
 
             tx.commit();
         } catch(Exception e) {
